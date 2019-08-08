@@ -1,0 +1,90 @@
+===============================================================================
+Project Outline:
+===============================================================================
+February 13, 2019: 
+- Save the postings
+- Scan the postings and grab leadership/lead related words
+  1.) Grab the full sentence/bullet item
+  2.) Get the key words from 1
+- Find some papers about the words distance, define model
+-------------------------------------------------------------------------------
+
+March 13, 2019:
+- Run scraping algorithm each day for two weeks with filter set
+  to 'within the last day' to grab each days leadership related
+  postings
+- Methods:
+  1.) Gensim - Word2Vec [New method - machine learning]
+  2.) TF-IDF (base-like model) [Older method]
+- Gain better understanding of methods:
+  Gensim – Word2Vec: https://radimrehurek.com/gensim/models/word2vec.html
+  Word Embedding: https://www.analyticsvidhya.com/blog/2017/06/
+                  word-embeddings-count-word2veec/
+-------------------------------------------------------------------------------
+                  
+May 5, 2019:
+- Send unique job titles to Dr. Dai
+- Word2Vec: the closest words to “leadership” and “management” and related 
+  words to “retail leadership” and “manufacture leadership” were displayed to
+  Dr. Zheng.
+- Next, Dr. Zheng will think about the detailed questions using these initial       results and let us extract data. If she needs some initial results from me,
+  she will send email to me.
+- Keep grabbing the job postings and break the job postings to sentences. 
+- Use one csv file for one-week data and put the date information in files’ 
+  name. 
+- For the past data, add the date information in files’ name.        
+- Organizing files by date will help us to do trend research in the future.
+- Analyze and explain the results from tf-idf. The main question is what 
+  relationships/conclusion did I find/discover from the tf-idf results. 
+  I could think about and write down anything I get. 
+- After Dr. Zheng gives questions lists, we check whether what you found could      answer her questions. If not, more analysis will be done and more explanations    will be added into this documents.
+-------------------------------------------------------------------------------
+  
+May 8, 2019:
+- Buy machine learning book, learn more about machine learning
+- Analyze current data to find trends, etc. and explain the data (give meaning)
+- Scrape jobs everyday for a month and combine data into one file by week
+- Add industry variable to data set (Indeed.com doesn't allow this)
+- Stage 2: Scrape jobs from LinkedIn.com and employees/employers leadership
+  definition/experience 
+-------------------------------------------------------------------------------
+
+May 15, 2019:
+1.) 
+Classify job posting data by function. Function classification:
+- General Management
+- CEO (if such job posting available)
+- Sales and Marketing
+- Information Technology
+- Accounting and Finance
+- Human Resources
+- Operations
+- Strategy (if applicable)
+- Partner (if applicable)
+- Legal (if applicable)
+- Research and Development
+The job title or job description may have such functional area information. We  hope to have separate folders for job postings from different functional areas.  Then we could use statistics/machine learning to explore "leadership" 
+definition in these functional areas.
+
+2.)
+Classify job posting data by industry. Industry classification: 
+https://www.osha.gov/pls/imis/sic_manual.html
+(only for the first level classification, A, B, C, D, .) I think it need to 
+check the company's information and does not directly show in the job postings. 
+You decide whether it is too hard to get this classification or not technically. 
+Let me know whether we could do this or not during the summer.
+ 
+3.)
+Classify job posting data by "Experience Level".  In the Indeed website, it 
+could list jobs according to different Experience Level. After I typed keyword 
+"leader", I got the following list. And from the following screenshot. You could see "Experience Level" (Entry level, Mid level, Senior level) in the bottom 
+right side. Is it possible to classify the job posting data according to 
+experience level? I do not mean to classify the historical data, it may be difficult because there is no such information in job postings. This information
+is provided by HRs when they posted a job. I mean is it possible to directly collect leadership-related job postings separately from these three categories. 
+The following research question we will study is to check whether the 
+classification of leadership-related job positions (from Indeed) is consistent 
+with the theoretical leadership levels. Please let me know your thoughts.
+ 
+4.)
+Dr. Zheng wants to get some sample leadership-related job postings from the same company, such as 3M, United Health, Wells Fargo, etc. Could you do some simple search on job postings to get some? Do not need too many. If you could find 5-10 postings from 3-5 companies, that will be enough.
+-------------------------------------------------------------------------------
