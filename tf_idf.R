@@ -32,47 +32,45 @@ library(tidytext)
 # important a word is to a document in a collection of a documents.
 
 # Convert job descriptions into tokens and count the frequency per job title
-job_words <- jobs %>%
+jobWords <- jobs %>%
   unnest_tokens(tokens, description) %>%
   count(title, tokens, sort = T)
 
 # Check if correct
-dim(unique(job_words$tokens)) == dim(job_words)
-job_words %>% 
+dim(unique(jobWords$tokens)) == dim(jobWords)
+jobWords %>% 
   group_by(title, tokens) %>%
   unique()
 
 # Total the amount of tokens per job title
-total_words <- job_words %>%
+totalWords <- jobWords %>%
   group_by(title) %>%
   summarize(total = sum(n)) %>%
   arrange(desc(total))
 
 # Combine specific tokens per job title and total tokens per job title
-job_words <- left_join(job_words, total_words)
+jobwords <- left_join(jobwords, totalWords)
 
 # TF-IDF 
-tf_idf <- job_words %>%
+tf_idf <- jobWords %>%
   bind_tf_idf(tokens, title, n)
 
 # Leadership terms - reference (https://www.thesaurus.com/browse/leadership)
-leadership_dict <- tibble(words = c("leadership", "leader", "lead", 
-                                    "supervise", "supervisor", 
-                                    "manager", "manage", "administration", 
-                                    "administrator", "authority", "control", 
-                                    "direction", "influence", "initiative", 
-                                    "management", "power", "capacity", 
-                                    "conduction", "conveyance", "directorship", 
-                                    "domination", "foresight", "hegemony", 
-                                    "pilotage", "preeminence", "primacy", 
-                                    "superiority", "supremacy", "sway", 
-                                    "superintendency"))
+leadershipDict <- tibble(words = c("leadership", "leader", "lead", 
+                                   "supervise", "supervisor", 
+                                   "manager", "manage", "administration", 
+                                   "administrator", "authority", "control", 
+                                   "direction", "influence", "initiative", 
+                                   "management", "power", "capacity", 
+                                   "conduction", "conveyance", "directorship", 
+                                   "domination", "foresight", "hegemony", 
+                                   "pilotage", "preeminence", "primacy", 
+                                   "superiority", "supremacy", "sway", 
+                                   "superintendency"))
 
 # Retrieve leadership words and their TF-IDF
-leader_words <- inner_join(tf_idf, leadership_dict, 
-                           by = c("tokens" = "words"))
+leaderWords <- inner_join(tf_idf, leadershipDict, 
+                          by = c("tokens" = "words"))
 
 
-write.csv(leader_words, "leader_words.csv", row.names = F)
-
-
+write.csv(leaderWords, "leader_words.csv", row.names = F)

@@ -3,7 +3,7 @@
 # Description: Scrapes Indeed.com's job postings from the last day.
 
 # Set-up workspace
-graphics.off()
+graphics.off
 rm(list = ls())
 
 # Load libraries
@@ -19,27 +19,27 @@ library(tools)
 # Concatenate Uniform Resource Locater Method
 # -----------------------------------------------------------------------------
 # Combines a given URL and page start number
-concatenate_url <- function(page_start_num, url = first_page_url) 
+concatenateURL <- function(pageStartNum, url = firstPageURL) 
 {
   # Combine URL and page start number 
-  str_c(url, page_start_num)
+  str_c(url, pageStartNum)
 }
 
 # -----------------------------------------------------------------------------
 # Concatenate Indeed Method
 # -----------------------------------------------------------------------------
 # Combines Indeed's domain and URL path
-concatenate_indeed <- function(url_path) 
+concatenateIndeed <- function(urlPath) 
 {
   # Combine Indeed's URL and path
-  str_c("https://indeed.com", url_path)
+  str_c("https://indeed.com", urlPath)
 }
 
 # -----------------------------------------------------------------------------
 # Get Uniform Resource Locaters Method
 # -----------------------------------------------------------------------------
 # Retrieves the navigation page URL's specified from the URL
-get_page_urls <- function(url)
+getPageURLs <- function(url)
 {
   # Retrieve navigation page URLs
   read_html(url) %>% 
@@ -55,7 +55,7 @@ get_page_urls <- function(url)
 # Get Titles Method
 # -----------------------------------------------------------------------------
 # Retrieves the job titles on the specified page
-get_titles <- function(page)
+getTitles <- function(page)
 {
   # Retrieve job titles from page
   page %>%
@@ -68,7 +68,7 @@ get_titles <- function(page)
 # Get Companies Method
 # -----------------------------------------------------------------------------
 # Retrieves the job companies on the specified page 
-get_companies <- function(page)
+getCompanies <- function(page)
 {
   # Retrieve job companies from page 
   page %>%
@@ -82,7 +82,7 @@ get_companies <- function(page)
 # Get Locations Method
 # -----------------------------------------------------------------------------
 # Retrieves the job locations on the specified page
-get_locations <- function(page)
+getLocations <- function(page)
 {
   # Retrieve job locations from page
   page %>%
@@ -96,7 +96,7 @@ get_locations <- function(page)
 # Get Card Links Method
 # -----------------------------------------------------------------------------
 # Retrieves the job card links on the specified page
-get_card_links <- function(page)
+getCardLinks <- function(page)
 {
   # Retrieve job card links from page 
   page %>% 
@@ -110,7 +110,7 @@ get_card_links <- function(page)
 # Get Card Method
 # -----------------------------------------------------------------------------
 # Retrieves the job card's HTML page from the specified link
-get_card <- function(link)
+getCard <- function(link)
 {
   # Link is an advertisement link
   if (!is.na(str_extract(link, "pagead")))
@@ -139,7 +139,7 @@ get_card <- function(link)
 # Get Description Method
 # -----------------------------------------------------------------------------
 # Retrieves the job description from the specified job card
-get_description <- function(card)
+getDescription <- function(card)
 {
   # Card page is not NA 
   if (!is.na(card))
@@ -173,56 +173,56 @@ get_description <- function(card)
 
 # URL for website to be scraped - Query: Leadership terms, filter by 
 # Full-Time Job, display 50, and sort by date
-first_page_url <- str_c("https://www.indeed.com/jobs?as_and&as_phr",
-                        "&as_any=leadership%20leader%20lead%20supervise%20",
-                        "supervisor%20manager%20manage%20administration%20",
-                        "administrator%20authority%20control%20direction%20",
-                        "influence%20initiative%20management%20power%20",
-                        "capacity%20conduction%20conveyance%20directorship%20",
-                        "domination%20foresight%20hegemony%20pilotage%20",
-                        "preeminence%20primacy%20superiority%20supremacy%20",
-                        "sway%20superintendency&as_not=Now%20hiring%20at%20",
-                        "hiring%20event&as_ttl&as_cmp&jt=fulltime&st&as_src",
-                        "&salary&radius=25&l&fromage=1&limit=50&sort=date",
-                        "&psf=advsrch&vjk=7c43b6b0e1a8fa43")
+firstPageURL <- str_c("https://www.indeed.com/jobs?as_and&as_phr",
+                      "&as_any=leadership%20leader%20lead%20supervise%20",
+                      "supervisor%20manager%20manage%20administration%20",
+                      "administrator%20authority%20control%20direction%20",
+                      "influence%20initiative%20management%20power%20",
+                      "capacity%20conduction%20conveyance%20directorship%20",
+                      "domination%20foresight%20hegemony%20pilotage%20",
+                      "preeminence%20primacy%20superiority%20supremacy%20",
+                      "sway%20superintendency&as_not=Now%20hiring%20at%20",
+                      "hiring%20event&as_ttl&as_cmp&jt=fulltime&st&as_src",
+                      "&salary&radius=25&l&fromage=1&limit=50&sort=date",
+                      "&psf=advsrch&vjk=7c43b6b0e1a8fa43")
 
 # -----------------------------------------------------------------------------
 # Scrape Jobs Method
 # -----------------------------------------------------------------------------
 # Scrapes job postings for their titles, companies, locations, and descriptions
-scrape_jobs <- function(first_page_url)
+scrapeJobs <- function(firstPageURL)
 {
   # Start process time 
-  process_time <<- proc.time()
+  processTime <<- proc.time()
   # Retrieve the date and time of the jobs being scraped 
-  scrape_time <- date()
+  scrapeTime <- date()
   # Format the date and time of the jobs being scraped 
-  scrape_time <- str_replace_all(string = scrape_time,
-                                 pattern = " ",
-                                 replacement = "_") %>%
-    str_replace_all(pattern = ":", replacement = "-")
+  scrapeTime <- str_replace_all(string = scrapeTime,
+                                pattern = " ",
+                                replacement = "_") %>%
+      str_replace_all(pattern = ":", replacement = "-")
 
   # Retrieve the page URLs 
-  page_urls <- get_page_urls(first_page_url)
+  pageURLs <- getPageURLs(firstPageURL)
   # Retrieve the HTML pages of all of the pages 
-  pages <- lapply(page_urls, read_html)
+  pages <- lapply(pageURLs, read_html)
   
   # Retrieve all of the job titles 
-  titles <- lapply(pages, get_titles) %>%
+  titles <- lapply(pages, getTitles) %>%
     unlist(.)
   # Retrieve all of the companies 
-  companies <- lapply(pages, get_companies) %>%
+  companies <- lapply(pages, getCompanies) %>%
     unlist(.)
   # Retrieve all of the job locations
-  locations <- lapply(pages, get_locations) %>%
+  locations <- lapply(pages, getLocations) %>%
     unlist(.)
   # Retrieve all of the job card links
-  card_links <- lapply(pages, get_card_links) %>%
+  cardLinks <- lapply(pages, getCardLinks) %>%
     unlist(.)
   # Retrieve all of the HTML pages of all of the job cards
-  cards <- lapply(card_links, get_card) 
+  cards <- lapply(cardLinks, getCard) 
   # Retrieve all of the job descriptions 
-  descriptions <- lapply(cards, get_description) %>%
+  descriptions <- lapply(cards, getDescription) %>%
     unlist(.)
   
   # Combine all of the job vector data into a tibble with unique data
@@ -231,59 +231,59 @@ scrape_jobs <- function(first_page_url)
     unique(.) %>%
     na.omit(.)
   # Load full data set of jobs 
-  complete_jobs <- readRDS("./job_postings/jobs.RData")
+  completeJobs <- readRDS("./job_postings/jobs.RData")
   # Pause the program to let data load
   Sys.sleep(0.25)
   # Combine the unique last day of jobs and the complete job data set
-  complete_jobs <- rbind(complete_jobs, jobs) %>%
+  completeJobs <- rbind(completeJobs, jobs) %>%
     unique(.) %>%
     na.omit(.)
   # Save the last day of jobs and complete jobs data sets
-  saveRDS(jobs, file = str_c("./job_postings/", scrape_time, ".RData"))
-  saveRDS(complete_jobs, file = "./job_postings/jobs.RData")
-  write.csv(complete_jobs, file = "./job_postings/jobs.csv", row.names = F)
+  saveRDS(jobs, file = str_c("./job_postings/", scrapeTime, ".RData"))
+  saveRDS(completeJobs, file = "./job_postings/jobs.RData")
+  write.csv(completeJobs, file = "./job_postings/jobs.csv", row.names = F)
   # End the process time and calculate difference
-  process_time <- proc.time() - process_time
+  processTime <- proc.time() - processTime
   # Convert elapsed process time from seconds to minutes 
-  process_time[3] <- round(process_time[3] / 60, 2)
+  processTime[3] <- round(processTime[3] / 60, 2)
   # Load process time and average process time in minutes
   load("./data/process_time.RData")
   # Pause the program to let data load
   Sys.sleep(0.05)
   # Combine current process time and all process times 
-  all_proc_time <- rbind(all_proc_time, process_time)
+  allProcTime <- rbind(allProcTime, processTime)
   # Calculate average process time in minutes
-  time_avg <- mean(all_proc_time$time)
+  timeAvg <- mean(allProcTime$time)
   # Save all of the process times and process time average
-  save(all_proc_time, time_avg, file = "./data/process_time.RData")
-  cat(str_c("Process time in minutes: ", process_time[3], "\n",
-            "Average process time in minutes: ", time_avg))
+  save(allProcTime, timeAvg, file = "./data/process_time.RData")
+  cat(str_c("Process time in minutes: ", processTime[3], "\n",
+            "Average process time in minutes: ", timeAvg))
   return(jobs)
 }
 
 # Scrape Indeed.com for the last day of job postings
-one_day_jobs <- scrape_jobs(first_page_url)
+oneDayJobs <- scrapeJobs(firstPageURL)
 
 # -----------------------------------------------------------------------------
 # Scrape Jobs Limit Method
 # -----------------------------------------------------------------------------
 # Scrapes job postings for their titles, companies, locations, and descriptions
 # based on a specific page start, page end, and jobs per page 
-scrape_jobs_limit <- function(url, pg_start, pg_end, jobs_per_page)
+scrapeJobsLimit <- function(url, pgStart, pgEnd, jobsPerPage)
 {
-  scrape_time <- date()
-  scrape_time <- str_replace_all(string = scrape_time,
-                                 pattern = " ",
-                                 replacement = "_") %>%
+  scrapeTime <- date()
+  scrapeTime <- str_replace_all(string = scrapeTime,
+                                pattern = " ",
+                                replacement = "_") %>%
     str_replace_all(pattern = ":", replacement = "-")
   # URL for website to be scraped - Query: All, filter by Full-Time Job, 
   # and sort by date
-  first_page_url <- url
-  pg_results <- seq(pg_start, pg_end, by = jobs_per_page)
-  ttl_jobs <- data.frame()
-  for(i in seq_along(pg_results)) 
+  firstPageURL <- url
+  pgResults <- seq(pgStart, pgEnd, by = jobsPerPage)
+  ttlJobs <- data.frame()
+  for(i in seq_along(pgResults)) 
   {
-    url <- str_c(first_page_url, "&start=", pg_results[i])
+    url <- str_c(firstPageURL, "&start=", pgResults[i])
     # tryCatch(
     # {
       page <- read_html(url)
@@ -302,35 +302,35 @@ scrape_jobs_limit <- function(url, pg_start, pg_end, jobs_per_page)
     #Sys.sleep(4)
     
     # Title
-    job_title <- page %>%
+    jobTitle <- page %>%
       html_nodes(xpath = "//a[@data-tn-element='jobTitle']") %>%
       html_attr("title") %>%
       toTitleCase()
     
     # Company
-    job_company <- page %>%
+    jobCompany <- page %>%
       html_nodes(xpath = "//*[@class='company']") %>%
       html_text() %>%
       toTitleCase() %>%
       str_trim()
     
     # Location
-    job_location <- page %>%
+    jobLocation <- page %>%
       html_nodes(xpath = "//*[@class='location']") %>%
       html_text() %>%
       toTitleCase() %>%
       str_trim()
     
     # Links
-    job_links <- page %>% 
+    jobLinks <- page %>% 
       html_nodes(xpath = "//a[@data-tn-element='jobTitle']") %>%
       rvest::html_attr("href")
     
     # Description
-    job_description <- c()
-    for(i in seq_along(job_links)) {
+    jobDescription <- c()
+    for(i in seq_along(jobLinks)) {
       
-      url <- str_c("https://indeed.com/", job_links[i])
+      url <- str_c("https://indeed.com/", jobLinks[i])
       # tryCatch(
       # {
         page <- read_html(url)
@@ -345,7 +345,7 @@ scrape_jobs_limit <- function(url, pg_start, pg_end, jobs_per_page)
       # "Error in open.connection(con, "rb") : Timeout was reached"
       #Sys.sleep(2)
       
-      job_description[i] <- page %>%
+      jobDescription[i] <- page %>%
         html_node(xpath = str_c("//*[@class='jobsearch-JobComponent-",
                                 "description icl-u-xs-mt--md']")) %>%
         html_text() %>%
@@ -354,26 +354,26 @@ scrape_jobs_limit <- function(url, pg_start, pg_end, jobs_per_page)
         str_replace_all("\r|\t|\n", " ") %>% 
         str_trim()
     }
-    pg_jobs <- tibble(job_title, job_company, job_location, job_description)
-    ttl_jobs <- rbind(ttl_jobs, pg_jobs)
+    pgJobs <- tibble(jobTitle, jobCompany, jobLocation, jobDescription)
+    ttlJobs <- rbind(ttlJobs, pgJobs)
   }
   jobs <- readRDS("./job_postings/jobs.RData")
   Sys.sleep(0.25)
-  jobs <- rbind(jobs, ttl_jobs) %>% 
+  jobs <- rbind(jobs, ttlJobs) %>% 
     unique(.)
-  saveRDS(ttl_jobs, file = str_c("./job_postings/", scrape_time, ".RData"))
+  saveRDS(ttlJobs, file = str_c("./job_postings/", scrapeTime, ".RData"))
   saveRDS(jobs, file = "./job_postings/jobs.RData")
-  return(ttl_jobs)
+  return(ttlJobs)
 }
 
 # Scrape Indeed.com for the last day of job postings
-one_day_jobs <- scrape_jobs_limit(url, 0, 990, 10)
+oneDayJobs <- scrapeJobsLimit(url, 0, 990, 10)
 
 # Retrieve file names
 files <- list.files(path = "./job_postings", pattern = "\\d+.RData", 
                     full.names = T, recursive = F)
-main_file <- list.files("./job_postings", pattern = "jobs.RData", 
-                        full.names = T, recursive = F)
+mainFile <- list.files("./job_postings", pattern = "jobs.RData", 
+                       full.names = T, recursive = F)
 
 for (file in files)
 {
@@ -391,15 +391,15 @@ for (file in files)
 for (file in files)
 {
   f <- readRDS(file)
-  tryCatch({
-    f <- with(f, 
-      tibble(title = job_title, company = job_company, location = job_location,
-                description = job_description)) 
+  tryCatch(
+  {
+    f <- with(f, tibble(title = jobTitle, company = jobCompany, 
+                        location = jobLocation, description = jobDescription)) 
   },
-  error = function(e){
-    f <- with(f, 
-      tibble(title = title, company = company, location = location,
-                description = description))
+  error = function(e)
+  {
+    f <- with(f, tibble(title = title, company = company, location = location, 
+                        description = description))
   })
   saveRDS(f, file)
 }
@@ -426,31 +426,31 @@ jobs <- readRDS("./job_postings/jobs.RData")
 # -----------------------------------------------------------------------------
 # Function that scrapes Indeed.com's job application descriptions and 
 # returns unique words from each job description
-scrape_desc <- function(url)
+scrapeDesc <- function(url)
 {
   # On error close server connection and display error
   tryCatch(
-    {
+  {
       # Error check
       as.character(url)
       
       tryCatch(
-        {
+      {
           # Load Selenium 
           library(RSelenium)
           # Load tidyverse
           library(tidyverse)
           # Load tidytext
           library(tidytext)
-        }, 
-        error = function(e) 
-        {
+      }, 
+      error = function(e) 
+      {
           # Install/Update packages
           install.packages("RSelenium")
           install.packages("tidyverse")
           install.packages("tidytext")
           install.packages("stringr")
-        })
+      })
       
       # Connect to Chrome browser
       chromeDriver <<- rsDriver(browser = "chrome", version = "latest", 
@@ -468,55 +468,55 @@ scrape_desc <- function(url)
       
       # Instantiate variable for the returned text 
       jobs <- NULL
-      bad_js <- 0
+      badJS <- 0
       # Instantiate tracker variable
       i <- 1
       # Instantiate total amount of job applications
-      total_cards <- 0
+      totalCards <- 0
       # Navigate to URL to be web scraped 
       client$navigate(url)
       # Let page load
       Sys.sleep(0.25)
       # Retrieve the application cards on the webpage in element form
-      app_card_elem <- client$findElements(using = "css selector", ".clickcard")
-      num_card_elem <<- length(app_card_elem)
+      appCardElem <- client$findElements(using = "css selector", ".clickcard")
+      numCardElem <<- length(appCardElem)
       print(str_c("Scraping ", url, " for job application descriptions..."))
       # Scrape applications description text
       while (TRUE)
       {
         # End of page, go to next page
-        if (i == num_card_elem + 1)
+        if (i == numCardElem + 1)
         {
           # Don't count poor JavaScript job cards
-          total_cards <- total_cards - bad_js
+          totalCards <- totalCards - badJS
           # Reset tracker variable
           i <- 1
           # Retrieve the application cards on the webpage in element form
-          next_page_elem <- client$findElements(using = "css selector", "b+ a .pn")
+          nextPageElem <- client$findElements(using = "css selector", "b+ a .pn")
           # Click next page
-          next_page_elem[[i]]$clickElement()
+          nextPageElem[[i]]$clickElement()
           # Refresh to eliminate pop-ups
           client$refresh()
           # Update element references
-          app_card_elem <- client$findElements(using = "css selector", ".clickcard")
+          appCardElem <- client$findElements(using = "css selector", ".clickcard")
           # Number of applications on current page 
-          num_card_elem <- length(app_card_elem)
+          numCardElem <- length(appCardElem)
           # Total applications scraped 
-          total_cards <<- total_cards + num_card_elem
+          totalCards <<- totalCards + numCardElem
           # Reset poor JavaScript cards count
-          bad_js <- 0
+          badJS <- 0
         }
         # Click application card
-        app_card_elem[[i]]$clickElement()
+        appCardElem[[i]]$clickElement()
         # Find the element that is located in the dynamic webpage, wrapped in 
         # try block to avoid pages that don't contain selector
         tryCatch(
-          {
+        {
             suppressMessages(
-              {
-                desc_elem <- client$findElement(using = "css selector", 
-                                                "#info-link-row .date , #vjs-desc , 
-                                                #vjs-header")
+            {
+                descElem <- client$findElement(using = "css selector", 
+                                               "#info-link-row .date , #vjs-desc , 
+                                               #vjs-header")
                 date <- client$findElement(using = "css selector", ".date")
                 # One month of jobs postings have been scraped
                 if (date$getElementText()[[1]] == "32 days ago")
@@ -530,16 +530,16 @@ scrape_desc <- function(url)
                 # Keep only unique tokens to avoid inaccurate analysis for each 
                 # job application 
                 text <- tibble(text = desc_elem$getElementText()[[1]] %>% 
-                                 str_split("\n", simplify = T) %>% 
-                                 str_trim(.))
+                                   str_split("\n", simplify = T) %>% 
+                                   str_trim(.))
                 jobs[i] <- text
               })
           },
           error = function(e)
           {
             #client$dismissAlert
-            desc_elem <- ""
-            bad_js <- bad_js + 1
+            descElem <- ""
+            badJS <- badJS + 1
           })
         i <- i + 1
       }
@@ -562,4 +562,4 @@ scrape_desc <- function(url)
 }
 
 # Retrieve all of the job postings from the last day
-job_postings <- scrape_desc(url)
+jobPostings <- scrapeDesc(url)
