@@ -88,3 +88,36 @@ with the theoretical leadership levels. Please let me know your thoughts.
 4.)
 Dr. Zheng wants to get some sample leadership-related job postings from the same company, such as 3M, United Health, Wells Fargo, etc. Could you do some simple search on job postings to get some? Do not need too many. If you could find 5-10 postings from 3-5 companies, that will be enough.
 -------------------------------------------------------------------------------
+
+September 9, 2019:
+There are two tasks in the next step:
+1.)
+Run tf-idf on old data and combined data (old + new) to find the closest 
+words (20 should be enough) to leadership (leader, lead, etc.) and 
+management (manager, manage, etc.)
+
+2.)
+Extract sentences in which management related words and leadership related 
+words appear together. After that, we will do some NLP analysis on those 
+sentences. 
+
+We will meet on Wednesday (9/25) at 1:50 pm in two weeks. 
+-------------------------------------------------------------------------------
+
+September 12, 2019
+Possible research questions:
+1. Are words close to leadership and those close to management different?
+2. What factors predict the differences? Why are they different?
+3. What’s the impact of the differences?
+4. When are management and leadership appear together? When they do, how do 
+   they differentiate or relate?
+5. Do jobs titled leader/leadership differ from jobs titled manager/management? 
+   If so, how are they different?
+ 
+Next steps:
+1. Add data to see whether job ads describe lead and manage differently? Are 
+   similar words used that are associated with lead and manage across different samples? 
+   Are there sufficient differences between words close to lead and words close to manage? (Ruxin)
+2. Develop a prospectus describing project ideas and get feedback from relevant 
+   experts at the Academy of Management conference. (Wei)
+-------------------------------------------------------------------------------
