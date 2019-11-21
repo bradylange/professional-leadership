@@ -1,7 +1,7 @@
 # Developer: Brady Lange
 # Date: 04/16/2019
 # Description: Calculates Term Frequency and Inverse Document Frequency 
-# (TF-IDF).
+#              (TF-IDF).
 
 # Set-up workspace
 graphics.off()

@@ -27,7 +27,8 @@ May 5, 2019:
 - Word2Vec: the closest words to “leadership” and “management” and related 
   words to “retail leadership” and “manufacture leadership” were displayed to
   Dr. Zheng.
-- Next, Dr. Zheng will think about the detailed questions using these initial       results and let us extract data. If she needs some initial results from me,
+- Next, Dr. Zheng will think about the detailed questions using these initial 
+  results and let us extract data. If she needs some initial results from me,
   she will send email to me.
 - Keep grabbing the job postings and break the job postings to sentences. 
 - Use one csv file for one-week data and put the date information in files’ 
@@ -37,7 +38,9 @@ May 5, 2019:
 - Analyze and explain the results from tf-idf. The main question is what 
   relationships/conclusion did I find/discover from the tf-idf results. 
   I could think about and write down anything I get. 
-- After Dr. Zheng gives questions lists, we check whether what you found could      answer her questions. If not, more analysis will be done and more explanations    will be added into this documents.
+- After Dr. Zheng gives questions lists, we check whether what you found could 
+  answer her questions. If not, more analysis will be done and more explanations 
+  will be added into this documents.
 -------------------------------------------------------------------------------
   
 May 8, 2019:
@@ -63,8 +66,10 @@ Classify job posting data by function. Function classification:
 - Partner (if applicable)
 - Legal (if applicable)
 - Research and Development
-The job title or job description may have such functional area information. We  hope to have separate folders for job postings from different functional areas.  Then we could use statistics/machine learning to explore "leadership" 
-definition in these functional areas.
+The job title or job description may have such functional area information. We 
+hope to have separate folders for job postings from different functional areas. 
+Then we could use statistics/machine learning to explore "leadership" definition 
+in these functional areas.
 
 2.)
 Classify job posting data by industry. Industry classification: 
@@ -77,16 +82,22 @@ Let me know whether we could do this or not during the summer.
 3.)
 Classify job posting data by "Experience Level".  In the Indeed website, it 
 could list jobs according to different Experience Level. After I typed keyword 
-"leader", I got the following list. And from the following screenshot. You could see "Experience Level" (Entry level, Mid level, Senior level) in the bottom 
+"leader", I got the following list. And from the following screenshot. You could 
+see "Experience Level" (Entry level, Mid level, Senior level) in the bottom 
 right side. Is it possible to classify the job posting data according to 
-experience level? I do not mean to classify the historical data, it may be difficult because there is no such information in job postings. This information
-is provided by HRs when they posted a job. I mean is it possible to directly collect leadership-related job postings separately from these three categories. 
+experience level? I do not mean to classify the historical data, it may be 
+difficult because there is no such information in job postings. This information
+is provided by HRs when they posted a job. I mean is it possible to directly 
+collect leadership-related job postings separately from these three categories. 
 The following research question we will study is to check whether the 
 classification of leadership-related job positions (from Indeed) is consistent 
 with the theoretical leadership levels. Please let me know your thoughts.
  
 4.)
-Dr. Zheng wants to get some sample leadership-related job postings from the same company, such as 3M, United Health, Wells Fargo, etc. Could you do some simple search on job postings to get some? Do not need too many. If you could find 5-10 postings from 3-5 companies, that will be enough.
+Dr. Zheng wants to get some sample leadership-related job postings from the same 
+company, such as 3M, United Health, Wells Fargo, etc. Could you do some simple 
+search on job postings to get some? Do not need too many. If you could find 5-10 
+postings from 3-5 companies, that will be enough.
 -------------------------------------------------------------------------------
 
 September 9, 2019:
@@ -116,8 +127,21 @@ Possible research questions:
  
 Next steps:
 1. Add data to see whether job ads describe lead and manage differently? Are 
-   similar words used that are associated with lead and manage across different samples? 
-   Are there sufficient differences between words close to lead and words close to manage? (Ruxin)
+   similar words used that are associated with lead and manage across different 
+   samples? 
+   Are there sufficient differences between words close to lead and words close 
+   to manage? (Ruxin)
 2. Develop a prospectus describing project ideas and get feedback from relevant 
    experts at the Academy of Management conference. (Wei)
+-------------------------------------------------------------------------------
+
+October 23, 2019
+- Retrieve two weeks (around 14 days) of data for each month 
+- Continue working on September 9, 2019 tasks
+-------------------------------------------------------------------------------
+
+November 20, 2019
+- 
+- 
+- 
 -------------------------------------------------------------------------------
