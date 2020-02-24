@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1574308258262.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "8D382543",
+    "lastKnownWriteTime" : 1574308563,
+    "last_content_update" : 1574308563291,
+    "path" : "~/r-projects/professional-leadership/document_clustering.R",
+    "project_path" : "document_clustering.R",
+    "properties" : {
+        "cursorPosition" : "44,18",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1571185706027.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "79FC1792",
+    "lastKnownWriteTime" : 1582514695,
+    "last_content_update" : 1582514695070,
+    "path" : "~/r-projects/professional-leadership/tf_idf_time_series.R",
+    "project_path" : "tf_idf_time_series.R",
+    "properties" : {
+        "cursorPosition" : "115,25",
+        "scrollLine" : "84",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
